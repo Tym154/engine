@@ -1,8 +1,8 @@
 #pragma once
 
 #include <renderer/renderer.h>
-#include <renderer/mesh.h>
-#include <renderer/face.h>
-#include <renderer/vertex.h>
+#include <renderer/core/mesh.h>
+#include <renderer/core/face.h>
+#include <renderer/core/vertex.h>
 
-#include <renderer/color.h>
+#include <renderer/core/color.h>

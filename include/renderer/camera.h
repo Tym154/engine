@@ -1,6 +1,8 @@
 #pragma once
 
-#include <renderer/vertex.h>
+#include <SDL3/SDL.h>
+
+#include <renderer/core/vertex.h>
 
 class Camera{
 public:
@@ -9,16 +11,16 @@ public:
     float yaw;   // rotation around Y axis
     float roll;  // rotation around Z axis
 
-    float fov; // field of view in degrees
-    float focal_length; // focal length based on FOV and aspect ratio
-    float aspect_ratio;
+    float focal_length;
 
-    Camera(float x, float y, float z, float focal_lenght, float fov_degrees, float aspect_ratio);
+    Camera(float x, float y, float z, float init_pitch, float init_yaw, float init_roll, float focal_lenght);
 
     void Move(float dx, float dy, float dz);
     void Rotate(float dpitch, float dyaw, float droll);
     void SetPosition(float x, float y, float z);
     void SetRotation(float pitch, float yaw, float roll);
+
+    void CameraMovement(float moveSpeed = 0.8, float mouseSensitivity = 0.0005);
 
     Vertex WorldToCamera(const Vertex& v) const;
     Vertex Project(const Vertex& v, int screenWidth, int screenHeight) const;

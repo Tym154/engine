@@ -2,8 +2,8 @@
 
 #include <vector>
 
-#include <renderer/face.h>
-#include <renderer/vertex.h>
+#include <renderer/core/face.h>
+#include <renderer/core/vertex.h>
 
 class Mesh{
 public:
@@ -17,6 +17,9 @@ public:
     void RotateX(float angle);
     void RotateY(float angle);
     void RotateZ(float angle);
+
+    void Move(float dx, float dy, float dz);
+    void Scale(float scale_factor);
 
 private:
     void RotateVertexX(Vertex& v, float cosA, float sinA);

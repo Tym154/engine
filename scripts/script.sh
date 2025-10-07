@@ -4,7 +4,7 @@ set -e
 # Resolve project root (this script lives in renderer/scripts/)
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD_DIR="$PROJECT_ROOT/build"
-EXECUTABLE="$BUILD_DIR/3D_renderer"
+EXECUTABLE="$BUILD_DIR/3D_engine"
 
 BUILD_TYPE=${1:-Debug}
 

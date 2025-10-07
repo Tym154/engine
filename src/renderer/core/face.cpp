@@ -1,14 +1,12 @@
-#pragma once
-
 #include <cmath>
 
-#include <renderer/face.h>
+#include <renderer/core/face.h>
 
-Face::Face(const Vertex& vertex1, const Vertex& vertex2, const Vertex& vertex3, const Color& faceColor){
-        v1 = vertex1;
-        v2 = vertex2;
-        v3 = vertex3;
-        color = faceColor;
+Face::Face(const Vertex& v_1, const Vertex& v_2, const Vertex& v_3, const Color& face_color){
+        this->v1 = v_1;
+        this->v2 = v_2;
+        this->v3 = v_3;
+        color = face_color;
         normal_vector = ComputeNormal();
 }
 

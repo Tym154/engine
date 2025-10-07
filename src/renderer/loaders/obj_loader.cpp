@@ -38,7 +38,7 @@ Mesh Obj_loader::load_obj(const char* filename) {
                 verts[i] = temp_vertices[vi - 1]; // OBJ indices start at 1
             }
 
-            mesh.faces.push_back(Face(verts[0], verts[1], verts[2], Color(255, 255, 255, 255))); // Default to white color
+            mesh.faces.push_back(Face(verts[0], verts[1], verts[2], Color()));
         }
     }
 

@@ -3,10 +3,11 @@
 #include <SDL3/SDL.h>
 #include <cstdint>
 
-#include <renderer/mesh.h>
-#include <renderer/face.h>
-#include <renderer/vertex.h>
-#include <renderer/color.h>
+#include <renderer/core/mesh.h>
+#include <renderer/core/face.h>
+#include <renderer/core/vertex.h>
+#include <renderer/core/color.h>
+#include <renderer/camera.h>
 
 
 class Renderer{
@@ -23,24 +24,27 @@ public:
 
     // 3D Face Drawing
     void DrawFace3D(int x0, int y0, int x1, int y1, int x2, int y2, uint32_t color);
-    void DrawFace3D(const Face& face, float focalLength);
+    void DrawFace3D(const Face& face, float focal_length);
+    void DrawFaceEdges3D(const Face& face, float focal_length);
 
-    void DrawMesh3D(const Mesh& mesh, float focalLength);
+    void DrawMesh3D(const Mesh& mesh, float focal_length);
+    void DrawMeshEdges3D(const Mesh& mesh, float focal_length);
 
     // Projection
-    Vertex ProjectTo2D(const Vertex& point, float focalLength, int screenWidth, int screenHeight);
+    Vertex ProjectTo2D(const Vertex& point, float focal_length, int screen_width, int screen_height);
+    bool IsBackface(const Face& face, const Camera& camera);
 
     bool IsRunning();
     void PollEvents();
 
-    SDL_Window* GetWindow() const { return window; } // Expose window for further customization (Not needed now)
+    SDL_Window* GetWindow() const { return window; } // Expose window for further scustomization (Not needed now)
 
 private:
     int width, height;
     bool running;
 
     SDL_Window* window;
-    SDL_Renderer* sdlRenderer;
+    SDL_Renderer* sdl_renderer;
     SDL_Texture* texture;
     uint32_t* pixels;
 

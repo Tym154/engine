@@ -7,7 +7,7 @@
 #include <vector>
 #include <algorithm>
 
-#include <renderer/mesh.h>
+#include <renderer/core/mesh.h>
 
 class Obj_loader{
 public:

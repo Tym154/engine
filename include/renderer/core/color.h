@@ -5,7 +5,7 @@
 struct Color{
     uint8_t r, g, b, a;
 
-    Color() : r(255), g(255), b(255), a(255) {} // Default to white
+    Color() : r(180), g(180), b(180), a(255) {} // Default to grey-ish
 
     explicit Color(uint32_t argb) {
         a = (argb >> 24) & 0xFF;

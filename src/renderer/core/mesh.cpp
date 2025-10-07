@@ -1,6 +1,6 @@
 #include <cmath>
 
-#include <renderer/mesh.h>
+#include <renderer/core/mesh.h>
 
 void Mesh::RotateX(float angle) {
     float cosA = std::cos(angle);
@@ -77,5 +77,31 @@ void Mesh::RotateZ(float angle) {
 
         face.normal_vector.x = nx;
         face.normal_vector.y = ny;
+    }
+}
+
+
+void Mesh::Move(float dx, float dy, float dz) {
+    center.x += dx;
+    center.y += dy;
+    center.z += dz;
+
+    for (Face& face : faces) {
+        for (Vertex* v : {&face.v1, &face.v2, &face.v3}) {
+            v->x += dx;
+            v->y += dy;
+            v->z += dz;
+        }
+    }
+}
+
+
+void Mesh::Scale(float scale_factor) {
+    for (Face& face : faces) {
+        for (Vertex* v : {&face.v1, &face.v2, &face.v3}) {
+            v->x = center.x + (v->x - center.x) * scale_factor;
+            v->y = center.y + (v->y - center.y) * scale_factor;
+            v->z = center.z + (v->z - center.z) * scale_factor;
+        }
     }
 }
